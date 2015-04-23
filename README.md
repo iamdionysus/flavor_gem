@@ -1,4 +1,4 @@
-# FlavorGem [![Build Status](https://travis-ci.org/iamdionysus/flavor_gem.svg?branch=master)](https://travis-ci.org/iamdionysus/flavor_gem)
+# FlavorGem [![Build Status](https://travis-ci.org/iamdionysus/flavor_gem.svg?branch=master)](https://travis-ci.org/iamdionysus/flavor_gem) [![Code Climate](https://codeclimate.com/github/iamdionysus/flavor_gem/badges/gpa.svg)](https://codeclimate.com/github/iamdionysus/flavor_gem) [![Coverage Status](https://coveralls.io/repos/iamdionysus/flavor_gem/badge.svg)](https://coveralls.io/r/iamdionysus/flavor_gem)
 
 ## Usage
 
