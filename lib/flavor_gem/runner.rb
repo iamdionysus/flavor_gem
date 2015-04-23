@@ -1,4 +1,4 @@
-require 'thor'
+require "thor"
 
 module FlavorGem
   class Runner < Thor

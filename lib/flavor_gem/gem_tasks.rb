@@ -29,7 +29,7 @@ module FlavorGem
     end
 
     def change
-      change = ENV['BY'].to_i
+      change = ENV["BY"].to_i
       change = 1 if change == 0
       change
     end
@@ -74,7 +74,7 @@ module FlavorGem
       end
 
       desc "default bump patch version from #{old_version} to #{bump(0, 0, 1)}"
-      task :bump => 'bump:patch'
+      task :bump => "bump:patch"
     end
   end
 end
