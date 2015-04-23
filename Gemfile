@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in flavor_gem.gemspec
+gem "coveralls", require: false
+
 gemspec
