@@ -7,7 +7,7 @@
 ## Usage
 
 ```bash
-flavor-gem test # adds rails test macro flavor
+flavor-gem minitest # adds rails test macro flavor
 flavor-gem thor # adds thor flavor to make executable in bin to use it
 flavor-gem bump # adds rake bump tasks to update version.rb file easily
 flavor-gem all # adds all flavors to bundler gem skeleton
