@@ -1,23 +1,27 @@
 require 'minitest_helper'
 
+class FlavorGem::Bump
+  public :add_bump_tasks, :remove_bump_tasks
+end
+
 class TestBump < Minitest::Test
   def setup
     @bump = FlavorGem::Bump.new
   end
 
-  def gem_tasks
-    'require "flavor_gem/gem_tasks"'    
+  def bump_tasks_regex
+    /require ["']flavor_gem\/bump_tasks["']/    
   end
 
-  # test "should delete bump task from Rakefile" do
-  #   @bump.delete
-  #   rakefile = File.read "Rakefile"
-  #   refute_match /#{gem_tasks}/, rakefile
-  # end
+  test "should add and delete bump task from Rakefile" do
+    rakefile_name = "lib/flavor_gem/template/Rakefile"
 
-  # test "should add bump task into Rakefile" do
-  #   @bump.generate
-  #   rakefile = File.read "Rakefile"
-  #   assert_match /flavor_gem\/gem_tasks/, rakefile
-  # end
+    @bump.add_bump_tasks rakefile_name
+    rakefile = File.read rakefile_name    
+    assert_match bump_tasks_regex, rakefile
+    
+    @bump.remove_bump_tasks rakefile_name
+    rakefile = File.read rakefile_name    
+    refute_match bump_tasks_regex, rakefile
+  end
 end

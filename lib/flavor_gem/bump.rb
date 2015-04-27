@@ -6,22 +6,41 @@ module FlavorGem
 
     desc "generate", "generate rake bump task to update version file easily"
     def generate
-      insert_into_file "Rakefile", gem_tasks, :after => "bundler/gem_tasks\"\n"
+      add_bump_tasks "Rakefile"
     end
 
     desc "delete", "delete generated bump flavor"
     def delete
-      gsub_file "Rakefile", /require "flavor_gem\/gem_tasks"/, ""
-      gsub_file "Rakefile", /require 'flavor_gem\/gem_tasks'/, ""      
+      remove_bump_tasks "Rakefile"
     end
 
     private
-    def rakefile
-      File.read "Rakefile"
+    def bump_tasks
+      "require \"flavor_gem/bump_tasks\"\n"
     end
 
-    def gem_tasks
-      'require "flavor_gem/gem_tasks"'
+    def bump_tasks_regex
+      /require ["']flavor_gem\/bump_tasks["']/
+    end
+
+    def add_bump_tasks file_name
+      rakefile = File.read file_name
+      single_quote_bundler_require = 'require "bundler\/bump_tasks"\n'
+      double_quote_bundler_require = "require 'bundler/bump_tasks'\n"
+      if rakefile =~ bump_tasks_regex
+        return
+      end
+      if rakefile.include? single_quote_bundler_require
+        insert_into_file file_name, bump_tasks, :after => single_quote_bundler_require
+      elsif rakefile.include? double_quote_bundler_require
+        insert_into_file file_name, bump_tasks, :after => double_quote_bundler_require
+      else
+        prepend_to_file file_name, bump_tasks
+      end
+    end
+
+    def remove_bump_tasks file_name
+      gsub_file file_name, /require ["']flavor_gem\/bump_tasks["']\n/, ""      
     end
   end
 end
