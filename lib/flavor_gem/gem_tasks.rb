@@ -3,7 +3,6 @@ module FlavorGem
     include Rake::DSL if defined? Rake::DSL
 
     class << self
-      attr_accessor :instance
       def install_tasks version_file
         new(version_file).install
       end
