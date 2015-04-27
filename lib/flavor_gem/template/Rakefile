@@ -1,5 +1,4 @@
 # added by flavor-gem generate minitest
-require "flavor_gem/gem_tasks"
 require "rake/testtask"
 
 Rake::TestTask.new do |t|
