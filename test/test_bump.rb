@@ -15,9 +15,9 @@ class TestBump < Minitest::Test
   #   refute_match /#{gem_tasks}/, rakefile
   # end
 
-  test "should add bump task into Rakefile" do
-    @bump.generate
-    rakefile = File.read "Rakefile"
-    assert_match /flavor_gem\/gem_tasks/, rakefile
-  end
+  # test "should add bump task into Rakefile" do
+  #   @bump.generate
+  #   rakefile = File.read "Rakefile"
+  #   assert_match /flavor_gem\/gem_tasks/, rakefile
+  # end
 end
