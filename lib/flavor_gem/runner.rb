@@ -21,9 +21,9 @@ module FlavorGem
     option aliases: :d
     def delete name
       if name == "all"
-        all_flavors.each { |n| invoke_delete n}
+        all_flavors.each { |n| invoke_delete n, []}
       elsif all_flavors.include? name
-        invoke_delete name
+        invoke_delete name, []
       else
         say_not_in_flavors name
       end

@@ -18,21 +18,24 @@ module FlavorGem
 
     private
     def append_rakefile
-      rakefile_to_add = File.read "lib/flavor_gem/template/Rakefile"
-      append_to_file "Rakefile", rakefile_to_add
+      rakefile_template = template "Rakefile"
+      append_to_file "Rakefile", rakefile_template
     end
 
     def create_minitest_helper
-      minitest_helper_to_add = File.read "lib/flavor_gem/template/minitest_helper.rb"
       minitest_helper_rb = "test/minitest_helper.rb"
+      minitest_helper_template = template "minitest_helper.rb"
       if File.exist? minitest_helper_rb
         puts "#{minitest_helper_rb} exists. Append to the file"
-        append_to_file minitest_helper_rb, minitest_helper_to_add
+        append_to_file minitest_helper_rb, minitest_helper_template
       else
-        create_file minitest_helper_rb, minitest_helper_to_add        
+        create_file minitest_helper_rb, minitest_helper_template   
       end
     end
 
+    def template name
+      File.read "lib/flavor_gem/template/#{name}"
+    end
     # TODO
     def inject_minitest_gemspec
       
