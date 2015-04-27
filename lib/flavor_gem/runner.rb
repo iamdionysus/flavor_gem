@@ -9,9 +9,9 @@ module FlavorGem
     option aliases: :g
     def generate name
       if name == "all"
-        all_flavors.each { |n| invoke_generate n}
+        all_flavors.each { |n| invoke_generate n, []}
       elsif all_flavors.include? name
-        invoke_generate name
+        invoke_generate name, []
       else
         say_not_in_flavors name
       end
