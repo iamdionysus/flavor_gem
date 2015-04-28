@@ -15,3 +15,11 @@ class Module
     define_method("test_#{name}", &block)
   end
 end
+# added by flavor-gem generate minitest
+require 'minitest/autorun'
+
+class Module
+  def test(name, &block)
+    define_method("test_#{name}", &block)
+  end
+end
