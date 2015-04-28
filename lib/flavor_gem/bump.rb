@@ -60,22 +60,12 @@ module FlavorGem
       @major, @minor, @patch = extract_current_version version[0]
     end
 
-    def version_file
-      @version_file
-    end
-    
     def extract_current_version version
       version.split(".").map { |i| i.to_i }
     end
 
     def old_version
       [@major, @minor, @patch].join "."
-    end
-
-    def change
-      change = ENV["BY"].to_i
-      change = 1 if change == 0
-      change
     end
     
     def bump(major = 0, minor = 0, patch = 1)
@@ -121,5 +111,18 @@ module FlavorGem
       desc "default bump patch version from #{old_version} to #{bump(0, 0, 1)}"
       task :bump => "bump:patch"
     end
+    
+    private
+    def version_file
+      @version_file
+    end
+    
+
+    def change
+      change = ENV["BY"].to_i
+      change = 1 if change == 0
+      change
+    end
+    
   end
 end

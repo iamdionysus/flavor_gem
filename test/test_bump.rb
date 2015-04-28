@@ -26,10 +26,12 @@ class TestBump < Minitest::Test
     refute_match bump_tasks_regex, rakefile
   end
   
-  test "should parse the version correctly" do
+  test "should bump the version correctly" do
     old_version = @bump_tasks.old_version
     major, minor, patch = @bump_tasks.extract_current_version old_version
     assert_equal old_version, [major, minor, patch].join(".")
+
+    new_version = @bump_tasks.bump
+    assert_equal new_version, [major, minor, patch + 1].join(".")
   end
-  
 end
