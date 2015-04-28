@@ -7,6 +7,7 @@ end
 class TestBump < Minitest::Test
   def setup
     @bump = FlavorGem::Bump.new
+    @bump_tasks = FlavorGem::BumpTasks.new Dir["lib/**/version.rb"][0]    
   end
 
   def bump_tasks_regex
@@ -24,4 +25,11 @@ class TestBump < Minitest::Test
     rakefile = File.read rakefile_name    
     refute_match bump_tasks_regex, rakefile
   end
+  
+  test "should parse the version correctly" do
+    old_version = @bump_tasks.old_version
+    major, minor, patch = @bump_tasks.extract_current_version old_version
+    assert_equal old_version, [major, minor, patch].join(".")
+  end
+  
 end
