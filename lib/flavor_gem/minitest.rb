@@ -19,7 +19,12 @@ module FlavorGem
     private
     def append_rakefile
       rakefile_template = template "Rakefile"
-      append_to_file "Rakefile", rakefile_template
+      rakefile = File.read "Rakefile"
+      if rakefile =~ /#{rakefile_template}/
+        puts "minitest is already there in Rakefile"
+      else
+        append_to_file "Rakefile", rakefile_template
+      end
     end
 
     def create_minitest_helper
