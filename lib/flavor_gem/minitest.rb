@@ -31,13 +31,22 @@ module FlavorGem
       minitest_helper_rb = "test/minitest_helper.rb"
       minitest_helper_template = template "minitest_helper.rb"
       if File.exist? minitest_helper_rb
-        puts "#{minitest_helper_rb} exists. Append to the file"
-        append_to_file minitest_helper_rb, minitest_helper_template
+        if file_has_template? minitest_helper_rb, minitest_helper_template
+          puts "#{minitest_helper_rb} alread has necessary set up"
+        else 
+          puts "#{minitest_helper_rb} exists. Append to the file"          
+          append_to_file minitest_helper_rb, minitest_helper_template
+        end
       else
         create_file minitest_helper_rb, minitest_helper_template   
       end
     end
 
+    def file_has_template? original_file_name, template
+      original = File.read original_file_name
+      original =~ /#{template}/
+    end
+    
     def template name
       File.read "lib/flavor_gem/template/#{name}"
     end
