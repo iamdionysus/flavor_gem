@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["iamdionysus@gmail.com"]
 
   spec.summary       = spec.description
-  spec.description   = "Flavors bundler gem skeleton with thor and rails minitest style test macro"
+  spec.description   = "Flavors bundler generated Rubygem gemspecs and scaffolding"
   spec.homepage      = "http://github.com/iamdionysus/flavor_gem"
 
   spec.files         = %w[flavor_gem.gemspec] + Dir['*.md', 'bin/*', 'lib/**/*.rb']
