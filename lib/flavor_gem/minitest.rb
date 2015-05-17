@@ -1,33 +1,30 @@
 require "thor"
 
 module FlavorGem
-  class Minitest < Thor
-    include Thor::Actions
-    
-    desc "generate", "edit gemspec, edit Rakefile, add/edit test/test_helper.rb"
-    def generate
-      append_rakefile
-      create_minitest_helper
-      inject_minitest_gemspec
-    end
+  module Generate
+    class Minitest < Thor::Group
+      include Thor::Actions
 
-    desc "delete", "delete generated minitest flavor"
-    def delete
-      
-    end
+      def append_rakefile
+        puts "append_rakefile"
+        # append_template_to_file "Rakefile", "Rakefile"
+      end
 
-    private
-    def append_rakefile
-      append_template_to_file "Rakefile", "Rakefile"
-    end
+      def create_minitest_helper
+        puts "create minitest helper"
+        # append_template_to_file "test/minitest_helper.rb", "minitest_helper.rb"
+      end
 
-    def create_minitest_helper
-      append_template_to_file "test/minitest_helper.rb", "minitest_helper.rb"
+      # TODO
+      def inject_minitest_gemspec
+        
+      end
     end
+  end
 
-    # TODO
-    def inject_minitest_gemspec
-      
+  module Delete
+    class Minitest < Thor::Group
+      include Thor::Actions
     end
   end
 end

@@ -5,6 +5,7 @@ module FlavorGem
   ALL_FLAVORS_NAME = ALL_FLAVORS.join "|"
 end
 
+# extend Thor::Actions
 class Thor
   module Actions
     def file_has_template?(file_name, template)

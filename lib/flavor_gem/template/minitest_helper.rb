@@ -1,4 +1,4 @@
-# added by flavor-gem generate minitest
+# added by "flavor-gem generate minitest"
 require 'minitest/autorun'
 
 class Module
