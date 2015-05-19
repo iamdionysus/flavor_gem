@@ -1,2 +1,25 @@
+AllCops:
+  Exclude:
+    - 'test/**/*'
+    - 'lib/**/template/**/*'
+
+# dash style for executable file
+Style/FileName:
+  Exclude:
+    - 'bin/*'
+
+# disable documentation checking
+Documentation:
+  Enabled: false
+
+# more method length
+MethodLength:
+  Max: 15
+
+# Limit line length
+LineLength:
+  Enabled: false
+
+# consistently use double quotes
 StringLiterals:
   EnforcedStyle: double_quotes

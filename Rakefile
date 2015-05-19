@@ -3,10 +3,7 @@ lib = File.expand_path("../../lib", __FILE__)
 $LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
 require "bundler/gem_tasks"
 
-begin
-  require "rspec/core/rake_task"
-  RSpec::Core::RakeTask.new :spec
-rescue LoadError
-end
+require "rspec/core/rake_task"
+RSpec::Core::RakeTask.new :spec
 
-task :default => :spec
+task default: :spec

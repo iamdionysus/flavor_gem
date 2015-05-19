@@ -2,6 +2,7 @@ require "thor"
 
 module FlavorGem
   module Generate
+    # minitest generate task
     class Minitest < Thor::Group
       include Thor::Actions
 
@@ -12,17 +13,18 @@ module FlavorGem
 
       def create_minitest_helper
         puts "create minitest helper"
-        # append_template_to_file "test/minitest_helper.rb", "minitest_helper.rb"
+        # append_template_to_file "test/minitest_helper.rb",
+        #                         "minitest_helper.rb"
       end
 
       # TODO
       def inject_minitest_gemspec
-        
       end
     end
   end
 
   module Delete
+    # minitest delete task
     class Minitest < Thor::Group
       include Thor::Actions
     end

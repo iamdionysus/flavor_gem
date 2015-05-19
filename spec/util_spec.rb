@@ -17,7 +17,6 @@ describe "Thor::Actions" do
     subject { Dummy.new }
     it { is_expected.to respond_to(:file_has_template?) }
     it "returns true when file includes template" do
-      
     end
   end
 end

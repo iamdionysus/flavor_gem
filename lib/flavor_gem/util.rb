@@ -1,7 +1,8 @@
-require 'thor'
+require "thor"
 
+# Constants
 module FlavorGem
-  ALL_FLAVORS = %w[minitest thor bump]
+  ALL_FLAVORS = %w(minitest thor bump)
   ALL_FLAVORS_NAME = ALL_FLAVORS.join "|"
 end
 
@@ -16,9 +17,9 @@ class Thor
       template_regex_string = Regexp.escape(template)
       Regexp.new(template_regex_string) =~ file
     end
-    
+
     def append_template_to_file(file_name, template)
-      if File.exists? file_name
+      if File.exist? file_name
         if file_has_template?(file_name, template)
           puts "#{file_name} already has #{template} contents"
           return false
@@ -30,7 +31,7 @@ class Thor
       end
     end
 
-    def template_file_name template
+    def template_file_name(template)
       "lib/flavor_gem/template/#{template}"
     end
   end
