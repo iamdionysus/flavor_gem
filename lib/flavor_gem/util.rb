@@ -9,11 +9,15 @@ end
 # extend Thor::Actions
 class Thor
   module Actions
-    def file_has_template?(file_name, template)
+    def normalize_code(code)
+      code.gsub(/\s+/, " ").tr('"', "'").strip
+    end
+
+    def file_include_template?(file_name, template)
       file = File.read file_name
       template = File.read(template_file_name(template))
-      file = file.strip.gsub(/\s+/, " ")
-      template = template.strip.gsub(/\s+/, " ")
+      file = normalize_code file
+      template = normalize_code template
       template_regex_string = Regexp.escape(template)
       Regexp.new(template_regex_string) =~ file
     end
