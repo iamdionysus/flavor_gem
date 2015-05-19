@@ -18,13 +18,14 @@ class Thor
       template = File.read(template_file_name(template))
       file = normalize_code file
       template = normalize_code template
-      template_regex_string = Regexp.escape(template)
-      Regexp.new(template_regex_string) =~ file
+      file.include? template
+      # template_regex_string = Regexp.escape(template)
+      # Regexp.new(template_regex_string) =~ file
     end
 
     def append_template_to_file(file_name, template)
       if File.exist? file_name
-        if file_has_template?(file_name, template)
+        if file_include_template?(file_name, template)
           puts "#{file_name} already has #{template} contents"
           return false
         else

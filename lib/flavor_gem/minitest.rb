@@ -2,19 +2,15 @@ require "thor"
 
 module FlavorGem
   module Generate
-    # minitest generate task
     class Minitest < Thor::Group
       include Thor::Actions
 
       def append_rakefile
-        puts "append_rakefile"
-        # append_template_to_file "Rakefile", "Rakefile"
+        append_template_to_file "Rakefile", "minitest.rake"
       end
 
+      # TODO
       def create_minitest_helper
-        puts "create minitest helper"
-        # append_template_to_file "test/minitest_helper.rb",
-        #                         "minitest_helper.rb"
       end
 
       # TODO
@@ -24,9 +20,9 @@ module FlavorGem
   end
 
   module Delete
-    # minitest delete task
     class Minitest < Thor::Group
       include Thor::Actions
+      # TODO
     end
   end
 end

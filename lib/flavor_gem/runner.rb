@@ -2,7 +2,6 @@ require "thor"
 require "flavor_gem"
 
 module FlavorGem
-  # For Runner.start to make executable
   class Runner < Thor
     include Thor::Actions
 

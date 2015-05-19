@@ -1,7 +1,6 @@
 require "thor"
 
 module FlavorGem
-  # version bump task command
   class Bump < Thor
     include Thor::Actions
 
