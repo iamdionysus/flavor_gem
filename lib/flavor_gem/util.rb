@@ -39,21 +39,30 @@ class Thor
       end
     end
 
-    def append_template_to_file(file_name, template)
+    def append_code_to_file(file_name, code)
       if File.exist? file_name
-        if file_include_template?(file_name, template)
-          puts "#{file_name} already has #{template} contents"
+        if file_include_code?(file_name, code)
+          puts "#{file_name} already has the content"
           return false
         else
-          append_to_file file_name, File.read(template_file_name(template))
+          append_to_file file_name, code
         end
       else
-        create_file file_name, File.read(template_file_name(template))
+        create_file file_name, code
       end
+    end
+
+    def append_template_to_file(file_name, template)
+      code = File.read template_file_name(template)
+      append_code_to_file file_name, code
     end
 
     def template_file_name(template)
       "lib/flavor_gem/template/#{template}"
+    end
+
+    def code_from_template(template_name)
+      File.read(template_file_name(template_name))
     end
   end
 end

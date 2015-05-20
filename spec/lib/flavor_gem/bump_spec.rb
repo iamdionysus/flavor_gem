@@ -27,4 +27,11 @@ describe FlavorGem::BumpTasks do
     new_version = [major, minor, patch + 1].join "."
     expect(subject.bump).to eq(new_version)
   end
+
+  context "#extract_current_version" do
+    it "returns major, minor, patch" do
+      major, minor, patch = subject.extract_current_version "0.1.4"
+      expect([major, minor, patch]).to eq([0, 1, 4])
+    end
+  end
 end

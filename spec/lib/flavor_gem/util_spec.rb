@@ -57,7 +57,19 @@ END
     end
   end
 
-  context "#append_tesmplate_to_file" do
+  context "#append_code_to_file" do
+    it "append to file when the file does not include code" do
+      rakefile = "lib/flavor_gem/template/Rakefile"
+      code = File.read(subject.template_file_name("minitest.rake"))
+      FileUtils.cp rakefile, rakefile + ".bak"
+      subject.append_code_to_file rakefile, code
+      result = subject.file_include_code? rakefile, code
+      expect(result).to be true
+      FileUtils.mv rakefile + ".bak", rakefile
+    end
+  end
+
+  context "#append_template_to_file" do
     rakefile = "lib/flavor_gem/template/Rakefile"
     template = "minitest.rake"
     it "creates file when the file does not exist" do
