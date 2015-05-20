@@ -5,12 +5,11 @@ module FlavorGem
   class Runner < Thor
     include Thor::Actions
 
+    # TODO: add multiple name handling
     desc "generate [#{FlavorGem::ALL_FLAVORS_NAME}]", "generate flavors"
     option aliases: :g
     def generate(name)
-      if name == "all"
-        all_flavors.each { |n| invoke_generate n, [] }
-      elsif all_flavors.include? name
+      if all_flavors.include? name
         invoke "flavor_gem:generate:#{name}", []
       else
         say_not_in_flavors name
