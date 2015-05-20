@@ -11,7 +11,7 @@ module FlavorGem
 
       def create_helper
         code = code_from_template "helper.rb"
-        code.tr! "@gem_name", File.basename(Dir.getwd)
+        code.gsub! "@gem_name", File.basename(Dir.getwd)
         append_code_to_file "spec/helper.rb", code
       end
 
