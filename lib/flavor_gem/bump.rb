@@ -100,7 +100,8 @@ module FlavorGem
     def install_bump_task(version_type, version)
       desc "bump version from #{old_version} to #{version}"
       task version_type do
-        save_version_file new_version
+        save_version_file version
+        puts "bump version from #{old_version} to #{version}"
       end
     end
 
