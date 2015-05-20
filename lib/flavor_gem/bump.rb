@@ -1,49 +1,35 @@
 require "thor"
 
 module FlavorGem
-  class Bump < Thor
-    include Thor::Actions
+  module Generate
+    class Bump < Thor::Group
+      include Thor::Actions
 
-    desc "generate", "generate rake bump task to update version file easily"
-    def generate
-      add_bump_tasks "Rakefile"
-    end
-
-    desc "delete", "delete generated bump flavor"
-    def delete
-      remove_bump_tasks "Rakefile"
-    end
-
-    private
-
-    def bump_tasks
-      "require \"flavor_gem/bump_tasks\"\n"
-    end
-
-    def bump_tasks_regex
-      %r{require ["']flavor_gem/bump_tasks["']}
-    end
-
-    def add_bump_tasks(file_name)
-      rakefile = File.read file_name
-      single_quote_bundler_require = 'require "bundler\/bump_tasks"\n'
-      double_quote_bundler_require = "require 'bundler/bump_tasks'\n"
-      return if rakefile =~ bump_tasks_regex
-      if rakefile.include? single_quote_bundler_require
-        insert_into_file file_name, bump_tasks, after: single_quote_bundler_require
-      elsif rakefile.include? double_quote_bundler_require
-        insert_into_file file_name, bump_tasks, after: double_quote_bundler_require
-      else
-        prepend_to_file file_name, bump_tasks
+      def add_rake_bump_task
+        bundler_task = "require 'bundler/gem_tasks'\n"
+        bundler_task = format_quote_to_file bundler_task, "Rakefile"
+        code_to_insert = File.read(template_file_name("bump.rake"))
+        code_to_insert = format_quote_to_file code_to_insert, "Rakefile"
+        if file_include_code? "Rakefile", bundler_task
+          insert_into_file "Rakefile", code_to_insert, after: bundler_task
+        else
+          prepend_to_file "Rakefile", code_to_insert
+        end
       end
-    end
-
-    def remove_bump_tasks(file_name)
-      gsub_file file_name, %r{require ["']flavor_gem/bump_tasks["']\n}, ""
     end
   end
 
-  # bump task implementation
+  module Delete
+    class Bump < Thor::Group
+      include Thor::Actions
+
+      def remove_bump_tasks
+        gsub_file "Rakefile", %r{require ["']flavor_gem/bump_tasks["']\n}, ""
+      end
+    end
+  end
+
+  # bump task implementation, needs refactoring
   class BumpTasks
     include Rake::DSL if defined? Rake::DSL
 
@@ -55,7 +41,7 @@ module FlavorGem
       end
     end
 
-    def initialize(version_file)
+    def initialize(version_file = Dir["lib/**/version.rb"][0])
       @version_file = version_file
       @version_data = File.read @version_file
       version = /\d+\.\d+\.\d+/.match @version_data

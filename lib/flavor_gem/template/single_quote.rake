@@ -1,0 +1,1 @@
+require "''single_quote''"

@@ -19,8 +19,24 @@ class Thor
       file = normalize_code file
       template = normalize_code template
       file.include? template
-      # template_regex_string = Regexp.escape(template)
-      # Regexp.new(template_regex_string) =~ file
+    end
+
+    def file_include_code?(file_name, code)
+      file = File.read file_name
+      file = normalize_code file
+      code = normalize_code code
+      file.include? code
+    end
+
+    def format_quote_to_file(code, file_name)
+      file = File.read file_name
+      double_quote_count = file.count '"'
+      single_quote_count = file.count "'"
+      if single_quote_count > double_quote_count
+        code.tr '"', "'"
+      else
+        code.tr "'", '"'
+      end
     end
 
     def append_template_to_file(file_name, template)

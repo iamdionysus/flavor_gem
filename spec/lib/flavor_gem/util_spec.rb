@@ -27,11 +27,33 @@ END
     end
   end
 
+  context "#file_include_code?" do
+    it "returns true when file includes code" do
+      result = subject.file_include_code? "lib/flavor_gem/template/bump.rake",
+                                          "require 'flavor_gem/bump_tasks'"
+      expect(result).to be true
+    end
+  end
+
   context "#file_include_template?" do
     it "returns true when file includes template" do
       result = subject.file_include_template? "lib/flavor_gem/template/minitest.rake",
                                               "minitest.rake"
       expect(result).to be true
+    end
+  end
+
+  context "#format_quote_to_file" do
+    it "converts code to single format when file has more single quote" do
+      code = 'require "test"'
+      test_file = subject.template_file_name "single_quote.rake"
+      code = subject.format_quote_to_file code, test_file
+      expect(code).to eq("require 'test'")
+    end
+    it "converts code to double quote format otherwise" do
+      code = "require 'test'"
+      code = subject.format_quote_to_file code, "Rakefile"
+      expect(code).to eq('require "test"')
     end
   end
 
