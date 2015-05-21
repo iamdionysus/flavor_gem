@@ -15,7 +15,7 @@ describe "Thor::Actions" do
   end
   subject { Dummy.new }
 
-  context "#normalize_code" do
+  describe "#normalize_code" do
     it "normalizes double quotes, whitespace" do
       code = <<END
 require "rake/testtask"
@@ -35,7 +35,7 @@ END
     end
   end
 
-  context "#file_include_template?" do
+  describe "#file_include_template?" do
     it "returns true when file includes template" do
       result = subject.file_include_template? "lib/flavor_gem/template/minitest.rake",
                                               "minitest.rake"
@@ -43,7 +43,7 @@ END
     end
   end
 
-  context "#format_quote_to_file" do
+  describe "#format_quote_to_file" do
     it "converts code to single format when file has more single quote" do
       code = 'require "test"'
       test_file = subject.template_file_name "single_quote.rake"
@@ -57,7 +57,7 @@ END
     end
   end
 
-  context "#append_code_to_file" do
+  describe "#append_code_to_file" do
     it "append to file when the file does not include code" do
       rakefile = "lib/flavor_gem/template/Rakefile"
       code = File.read(subject.template_file_name("minitest.rake"))
@@ -69,7 +69,7 @@ END
     end
   end
 
-  context "#append_template_to_file" do
+  describe "#append_template_to_file" do
     rakefile = "lib/flavor_gem/template/Rakefile"
     template = "minitest.rake"
     it "creates file when the file does not exist" do
@@ -89,9 +89,15 @@ END
     end
   end
 
-  context "#gem_name" do
+  describe "#gem_name" do
     it "gets current gem name" do
       expect(subject.gem_name).to eq("flavor_gem")
+    end
+  end
+
+  describe "#gem_class_name" do
+    it "gets gem class name" do
+      expect(subject.gem_class_name).to eq("FlavorGem")
     end
   end
 end

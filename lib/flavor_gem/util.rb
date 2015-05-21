@@ -68,5 +68,9 @@ class Thor
     def gem_name
       File.basename Dir.getwd
     end
+
+    def gem_class_name
+      gem_name.split("_").map(&:capitalize).join
+    end
   end
 end
