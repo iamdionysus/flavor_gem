@@ -29,10 +29,16 @@ RSpec.describe FlavorGem::Generate::ThorBin do
     let(:test_file_name) { subject.template_file_name "thor_bin_test" }
     after(:example) { restore test_file_name }
 
-    it "creates bin file with gem name" do
+    it "creates bin file" do
       backup test_file_name
       expect { subject.create_bin_file test_file_name }
-        .to output(/#{subject.gem_name}/).to_stdout
+        .to output(/create/).to_stdout
+    end
+
+    it "does not create when it exists" do
+      backup test_file_name, copy: true
+      expect { subject.create_bin_file test_file_name }
+        .to output(/exists/).to_stdout
     end
   end
 end

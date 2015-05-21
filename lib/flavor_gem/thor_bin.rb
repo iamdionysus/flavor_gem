@@ -23,6 +23,10 @@ module FlavorGem
       end
 
       def create_bin_file(file_name = "bin/#{gem_name}")
+        if File.exist? file_name
+          puts "#{file_name} already exists, do nothing on it"
+          return
+        end
         code = template_content "thor_bin"
         code.gsub!(/@gem_name/, gem_name)
         code.gsub!(/@gem_class_name/, gem_class_name)

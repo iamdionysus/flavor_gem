@@ -58,7 +58,8 @@ class Thor
     end
 
     def template_file_name(template)
-      "lib/flavor_gem/template/#{template}"
+      # "lib/flavor_gem/template/#{template}"
+      File.expand_path("../../../template/#{template}", __FILE__)
     end
 
     def template_content(template_name)
