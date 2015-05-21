@@ -2,7 +2,7 @@ require "thor"
 
 # Constants
 module FlavorGem
-  ALL_FLAVORS = %w(rspec minitest thor bump)
+  ALL_FLAVORS = %w(rspec minitest thor_bin bump)
   ALL_FLAVORS_NAME = ALL_FLAVORS.join "|"
 end
 

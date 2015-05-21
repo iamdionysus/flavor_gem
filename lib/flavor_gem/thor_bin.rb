@@ -7,7 +7,7 @@ module FlavorGem
 
       # TODO
       def add_runtime_dependency
-        puts "please add edit gemspec to add thor for runtime_dependency"
+        puts "please edit gemspec to add thor for runtime_dependency"
       end
 
       def create_runner_class
