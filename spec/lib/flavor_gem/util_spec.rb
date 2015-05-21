@@ -18,7 +18,8 @@ describe "Thor::Actions" do
   describe "#template_file_name" do
     it "returns the right path" do
       result = subject.template_file_name("Rakefile")
-      expect(result).to eq("c:/gabriel/flavor_gem/template/Rakefile")
+      expected = File.expand_path("../../../../template/Rakefile", __FILE__)
+      expect(result).to eq(expected)
     end
   end
   describe "#normalize_code" do
