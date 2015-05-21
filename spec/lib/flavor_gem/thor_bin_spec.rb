@@ -9,11 +9,19 @@ RSpec.describe FlavorGem::Generate::ThorBin do
   end
 
   describe "#create_runner_class" do
+    let(:test_file_name) { subject.template_file_name "runner_test.rb" }
+    after(:example) { restore test_file_name }
+
     it "creates runner.rb file" do
-      test_file_name = "lib/#{subject.gem_name}/runner.rb"
       backup test_file_name
-      expect { subject.create_runner_class }.to output(/#{subject.gem_name}/).to_stdout
-      restore test_file_name
+      expect { subject.create_runner_class file_name: test_file_name }
+        .to output(/create/).to_stdout
+    end
+
+    it "does not create when it exists" do
+      backup test_file_name, copy: true
+      expect { subject.create_runner_class file_name: test_file_name }
+        .to output(/exists/).to_stdout
     end
   end
 
