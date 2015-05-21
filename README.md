@@ -11,6 +11,7 @@ flavor-gem generate rspec # adds rspec test flavor
 flavor-gem generate minitest # adds rails test macro flavor
 flavor-gem generate thor # adds thor flavor to make executable in bin to use it
 flavor-gem generate bump # adds rake bump tasks to update version.rb file easily
+flavor-gem generate private # prevents rake release to push rubygems
 ```
 
 ## Contributing
