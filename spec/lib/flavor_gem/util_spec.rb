@@ -29,7 +29,7 @@ END
 
   context "#file_include_code?" do
     it "returns true when file includes code" do
-      result = subject.file_include_code? "lib/flavor_gem/template/bump.rake",
+      result = subject.file_include_code? "template/bump.rake",
                                           "require 'flavor_gem/bump_tasks'"
       expect(result).to be true
     end
@@ -37,7 +37,7 @@ END
 
   describe "#file_include_template?" do
     it "returns true when file includes template" do
-      result = subject.file_include_template? "lib/flavor_gem/template/minitest.rake",
+      result = subject.file_include_template? "template/minitest.rake",
                                               "minitest.rake"
       expect(result).to be true
     end
@@ -59,7 +59,7 @@ END
 
   describe "#append_code_to_file" do
     it "append to file when the file does not include code" do
-      rakefile = "lib/flavor_gem/template/Rakefile"
+      rakefile = "template/Rakefile"
       code = File.read(subject.template_file_name("minitest.rake"))
       FileUtils.cp rakefile, rakefile + ".bak"
       subject.append_code_to_file rakefile, code
@@ -70,7 +70,7 @@ END
   end
 
   describe "#append_template_to_file" do
-    rakefile = "lib/flavor_gem/template/Rakefile"
+    rakefile = "template/Rakefile"
     template = "minitest.rake"
     it "creates file when the file does not exist" do
       FileUtils.mv rakefile, rakefile + ".bak"

@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Flavors bundler generated Rubygem and scaffolding"
   spec.homepage      = "http://github.com/iamdionysus/flavor_gem"
 
-  spec.files         = %w(flavor_gem.gemspec) + Dir["*.md", "bin/*", "lib/**/*.rb", "lib/template/*"]
+  spec.files         = %w(flavor_gem.gemspec) + Dir["*.md", "bin/*", "lib/**/*.rb", "template/*"]
   spec.bindir        = "bin"
   spec.executables   = %w(flavor-gem)
   spec.require_paths = ["lib"]

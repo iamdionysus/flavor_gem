@@ -58,7 +58,7 @@ class Thor
     end
 
     def template_file_name(template)
-      "lib/flavor_gem/template/#{template}"
+      "template/#{template}"
     end
 
     def template_content(template_name)
