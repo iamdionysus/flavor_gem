@@ -60,13 +60,13 @@ module FlavorGem
       [@major, @minor, @patch].join "."
     end
 
-    def bump(major = 0, minor = 0, patch = 1)
-      major = @major + major
-      minor = @minor + minor
-      patch = @patch + patch
+    def bump(d_major = 0, d_minor = 0, d_patch = 1)
+      major = @major + d_major
+      minor = @minor + d_minor
+      patch = @patch + d_patch
       major = 0 if major < 0
-      minor = 0 if minor < 0
-      patch = 0 if patch < 0
+      minor = 0 if minor < 0 || d_major > 0
+      patch = 0 if patch < 0 || d_major > 0 || d_minor > 0
       [major, minor, patch].join "."
     end
 
