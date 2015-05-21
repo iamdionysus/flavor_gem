@@ -88,4 +88,10 @@ END
       FileUtils.mv rakefile + ".bak", rakefile
     end
   end
+
+  context "#gem_name" do
+    it "gets current gem name" do
+      expect(subject.gem_name).to eq("flavor_gem")
+    end
+  end
 end

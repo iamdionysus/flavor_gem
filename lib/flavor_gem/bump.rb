@@ -8,8 +8,12 @@ module FlavorGem
       def add_rake_bump_task
         bundler_task = "require 'bundler/gem_tasks'\n"
         bundler_task = format_quote_to_file bundler_task, "Rakefile"
-        code_to_insert = File.read(template_file_name("bump.rake"))
+        code_to_insert = template_content "bump.rake"
         code_to_insert = format_quote_to_file code_to_insert, "Rakefile"
+        if file_include_code? "Rakefile", code_to_insert
+          puts "Rakefile already has the content"
+          return
+        end
         if file_include_code? "Rakefile", bundler_task
           insert_into_file "Rakefile", code_to_insert, after: bundler_task
         else

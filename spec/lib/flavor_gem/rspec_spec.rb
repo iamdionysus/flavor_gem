@@ -11,7 +11,7 @@ describe FlavorGem::Generate::Rspec do
   it "creates helper file" do
     FileUtils.mv "spec/helper.rb", "spec/helper.rb.bak"
     subject.create_helper
-    code = subject.code_from_template "helper.rb"
+    code = subject.template_content "helper.rb"
     code.gsub! "@gem_name", File.basename(Dir.getwd)
     result = subject.file_include_code?("spec/helper.rb", code)
     expect(result).to be true

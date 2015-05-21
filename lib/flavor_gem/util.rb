@@ -2,7 +2,7 @@ require "thor"
 
 # Constants
 module FlavorGem
-  ALL_FLAVORS = %w(minitest thor bump)
+  ALL_FLAVORS = %w(rspec minitest thor bump)
   ALL_FLAVORS_NAME = ALL_FLAVORS.join "|"
 end
 
@@ -15,7 +15,7 @@ class Thor
 
     def file_include_template?(file_name, template)
       file = File.read file_name
-      template = File.read(template_file_name(template))
+      template = template_content template
       file = normalize_code file
       template = normalize_code template
       file.include? template
@@ -53,7 +53,7 @@ class Thor
     end
 
     def append_template_to_file(file_name, template)
-      code = File.read template_file_name(template)
+      code = template_content template
       append_code_to_file file_name, code
     end
 
@@ -61,8 +61,12 @@ class Thor
       "lib/flavor_gem/template/#{template}"
     end
 
-    def code_from_template(template_name)
-      File.read(template_file_name(template_name))
+    def template_content(template_name)
+      File.read template_file_name(template_name)
+    end
+
+    def gem_name
+      File.basename Dir.getwd
     end
   end
 end
