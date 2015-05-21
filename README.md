@@ -1,9 +1,8 @@
 # FlavorGem
 [![Gem Version](https://img.shields.io/gem/v/flavor_gem.svg)](https://rubygems.org/gems/flavor_gem)
-[![Build Status](https://travis-ci.org/iamdionysus/flavor_gem.svg?branch=master)](https://travis-ci.org/iamdionysus/flavor_gem)
-[![Code Climate](https://codeclimate.com/github/iamdionysus/flavor_gem/badges/gpa.svg)](https://codeclimate.com/github/iamdionysus/flavor_gem)
-[![Coverage Status](https://coveralls.io/repos/iamdionysus/flavor_gem/badge.svg)](https://coveralls.io/r/iamdionysus/flavor_gem)
-[![Coverage Status](https://coveralls.io/repos/iamdionysus/flavor_gem/badge.svg?branch=master)](https://coveralls.io/r/iamdionysus/flavor_gem?branch=master)
+[![Build Status](https://travis-ci.org/iamdionysus/flavor_gem.svg)](https://travis-ci.org/iamdionysus/flavor_gem)
+[![Code Climate](https://img.shields.io/codeclimate/github/iamdionysus/flavor_gem.svg)](https://codeclimate.com/github/iamdionysus/flavor_gem)
+[![Coverage Status](https://img.shields.io/coveralls/iamdionysus/flavor_gem.svg)](https://coveralls.io/r/iamdionysus/flavor_gem)
 
 ## Usage
 
