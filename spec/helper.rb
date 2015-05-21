@@ -12,7 +12,7 @@ def backup(file_name, copy: false)
   if copy
     FileUtils.cp(file_name, file_name_bak)
   else
-    FileUtils.mv(file_name, file_name_bak, verbose: true)
+    FileUtils.mv(file_name, file_name_bak)
   end
 end
 
