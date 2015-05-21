@@ -22,8 +22,8 @@ module FlavorGem
         create_file file_name, code
       end
 
-      def create_bin_file
-        code = template_content "thor-bin"
+      def create_bin_file(file_name: "thor_bin")
+        code = template_content file_name
         code.gsub!(/@gem_name/, gem_name)
         code.gsub!(/@gem_class_name/, gem_class_name)
         create_file "bin/#{gem_name}", code
