@@ -5,6 +5,10 @@ module FlavorGem
     class Rspec < Thor::Group
       include Thor::Actions
 
+      # TODO
+      def delete_minitest_rake
+      end
+
       def append_rakefile
         append_template_to_file "Rakefile", "rspec.rake"
       end

@@ -16,6 +16,10 @@ def backup(file_name, copy: false)
   end
 end
 
+def rm(file_name)
+  FileUtils.rm file_name
+end
+
 def restore(file_name)
   file_name_bak = "#{file_name}.bak"
   FileUtils.mv(file_name_bak, file_name) if File.exist?(file_name_bak)
