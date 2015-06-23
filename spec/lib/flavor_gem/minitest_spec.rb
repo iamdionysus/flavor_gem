@@ -2,12 +2,13 @@ require "helper"
 require "fileutils"
 
 describe FlavorGem::Generate::Minitest do
+  let(:rakefile) { "template/Rakefile" }
   it "appends minitest.rake template to Rakefile" do
-    FileUtils.mv "Rakefile", "Rakefile.bak"
-    subject.append_rakefile
-    result = subject.file_include_template? "Rakefile", "minitest.rake"
+    backup rakefile
+    subject.append_rakefile rakefile
+    result = subject.file_include_template? rakefile, "minitest.rake"
     expect(result).to be true
-    FileUtils.mv "Rakefile.bak", "Rakefile"
+    restore rakefile
   end
 end
 

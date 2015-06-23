@@ -15,6 +15,13 @@ describe "Thor::Actions" do
   end
   subject { Dummy.new }
 
+  describe "#detect_line_ending" do
+    it "returns file line ending based on observation" do
+      # needs refactoring
+      line_ending = subject.detect_line_ending "template/Rakefile"
+      expect(line_ending).to eq("\n")
+    end
+  end
   describe "#template_file_name" do
     it "returns the right path" do
       result = subject.template_file_name("Rakefile")

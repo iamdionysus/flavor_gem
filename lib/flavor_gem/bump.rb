@@ -5,19 +5,21 @@ module FlavorGem
     class Bump < Thor::Group
       include Thor::Actions
 
-      def add_rake_bump_task
-        bundler_task = "require 'bundler/gem_tasks'\n"
-        bundler_task = format_quote_to_file bundler_task, "Rakefile"
-        code_to_insert = template_content "bump.rake"
-        code_to_insert = format_quote_to_file code_to_insert, "Rakefile"
-        if file_include_code? "Rakefile", code_to_insert
+      # this assumes Rakefile is already there
+      # TODO: handle when Rakefile is missing
+      def add_rake_bump_task(rakefile = "Rakefile")
+        bundler_task = "require 'bundler/gem_tasks'"
+        bundler_task = format_quote_to_file bundler_task, rakefile
+        code_to_insert = template_content "bump.rake", format_file: rakefile
+        code_to_insert = format_quote_to_file code_to_insert, rakefile
+        if file_include_code? rakefile, code_to_insert
           puts "Rakefile already has the content"
           return
         end
-        if file_include_code? "Rakefile", bundler_task
-          insert_into_file "Rakefile", code_to_insert, after: bundler_task
+        if file_include_code? rakefile, bundler_task
+          insert_line_into_file rakefile, code_to_insert, after: bundler_task
         else
-          prepend_to_file "Rakefile", code_to_insert
+          prepend_to_file rakefile, code_to_insert
         end
       end
     end
@@ -28,7 +30,8 @@ module FlavorGem
       include Thor::Actions
 
       def remove_bump_tasks
-        gsub_file "Rakefile", %r{require ["']flavor_gem/bump_tasks["']\n}, ""
+        # gsub_file "Rakefile", %r{require ["']flavor_gem/bump_tasks["']\n}, ""
+        # not working
       end
     end
   end

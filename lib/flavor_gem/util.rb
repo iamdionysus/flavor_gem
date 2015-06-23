@@ -39,6 +39,34 @@ class Thor
       end
     end
 
+    def detect_line_ending(file_name)
+      file = File.read file_name
+      dos = file.count "\r\n"
+      unix = file.count "\n"
+      if dos > unix
+        "\r\n"
+      else
+        "\n"
+      end
+    end
+
+    def replace_line_ending(code, line_ending)
+      pattern = /[\\r]?\\n/
+      code.gsub pattern, line_ending
+    end
+
+    def normalize_code(code, format_file)
+      code = format_quote_to_file code, format_file
+      code = replace_line_ending code, detect_line_ending(format_file)
+    end
+
+    def insert_line_into_file(file_name, code, **options)
+      line_ending = detect_line_ending file_name
+      options.map { |k, v| [k, v << line_ending] }.to_h if options
+      code = replace_line_ending(code, line_ending)
+      insert_into_file file_name, code, options
+    end
+
     def append_code_to_file(file_name, code)
       if File.exist? file_name
         if file_include_code?(file_name, code)
@@ -61,8 +89,13 @@ class Thor
       File.expand_path("../../../template/#{template}", __FILE__)
     end
 
-    def template_content(template_name)
-      File.read template_file_name(template_name)
+    def template_content(template_name, format_file: nil)
+      template = File.read template_file_name(template_name)
+      if format_file
+        normalize_code(template, format_file)
+      else
+        template
+      end
     end
 
     def gem_name

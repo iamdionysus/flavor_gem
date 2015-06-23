@@ -1,22 +1,22 @@
 require "helper"
-require "fileutils"
 
 describe FlavorGem::Generate::Bump do
-  it "insert require to Rakefile when it has bundler gem task" do
-    # FileUtils.cp "Rakefile", "Rakefile.bak"
-    # subject.gsub_file "Rakefile", %r{require ["']flavor_gem/bump_tasks["']\n}, ""
-    # subject.add_rake_bump_task
-    # result = subject.file_include_template? "Rakefile", "bump.rake"
-    # expect(result).to be true
-    # FileUtils.mv "Rakefile.bak", "Rakefile"
+  let(:rakefile) { "template/Rakefile" }
+  it "insert bump task after the bundler/gem_tasks line" do
+    backup rakefile, copy: true
+    subject.add_rake_bump_task rakefile
+    result = subject.file_include_template? rakefile, "bump.rake"
+    puts File.read(rakefile)
+    expect(result).to be true
+    restore rakefile
   end
   it "append require to Rakefile otherwise" do
-    FileUtils.mv "Rakefile", "Rakefile.bak"
-    FileUtils.touch "Rakefile"
-    subject.add_rake_bump_task
-    result = subject.file_include_template? "Rakefile", "bump.rake"
+    backup rakefile
+    touch rakefile
+    subject.add_rake_bump_task rakefile
+    result = subject.file_include_template? rakefile, "bump.rake"
     expect(result).to be true
-    FileUtils.mv "Rakefile.bak", "Rakefile"
+    restore rakefile
   end
 end
 

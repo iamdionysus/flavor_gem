@@ -5,8 +5,8 @@ module FlavorGem
     class Minitest < Thor::Group
       include Thor::Actions
 
-      def append_rakefile
-        append_template_to_file "Rakefile", "minitest.rake"
+      def append_rakefile(rakefile = "Rakefile")
+        append_template_to_file rakefile, "minitest.rake"
       end
 
       # TODO
