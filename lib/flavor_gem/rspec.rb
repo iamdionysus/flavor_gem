@@ -9,14 +9,14 @@ module FlavorGem
       def delete_minitest_rake
       end
 
-      def append_rakefile
-        append_template_to_file "Rakefile", "rspec.rake"
+      def append_rakefile(rakefile = "Rakefile")
+        append_template_to_file rakefile, "rspec.rake"
       end
 
-      def create_helper
+      def create_helper(helper = "spec/helper.rb")
         code = template_content "helper.rb"
         code.gsub! "@gem_name", gem_name
-        append_code_to_file "spec/helper.rb", code
+        append_code_to_file helper, code
       end
 
       # TODO

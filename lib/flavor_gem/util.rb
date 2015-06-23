@@ -9,10 +9,6 @@ end
 # extend Thor::Actions
 class Thor
   module Actions
-    def normalize_code(code)
-      code.gsub(/\s+/, " ").tr('"', "'").strip
-    end
-
     def file_include_template?(file_name, template)
       file = File.read file_name
       template = template_content template
@@ -55,9 +51,13 @@ class Thor
       code.gsub pattern, line_ending
     end
 
-    def normalize_code(code, format_file)
-      code = format_quote_to_file code, format_file
-      code = replace_line_ending code, detect_line_ending(format_file)
+    def normalize_code(code, format_file: nil)
+      if format_file
+        code = format_quote_to_file code, format_file
+        code = replace_line_ending code, detect_line_ending(format_file)
+      else
+        code.gsub(/\s+/, " ").tr('"', "'").strip
+      end
     end
 
     def insert_line_into_file(file_name, code, **options)
@@ -92,7 +92,7 @@ class Thor
     def template_content(template_name, format_file: nil)
       template = File.read template_file_name(template_name)
       if format_file
-        normalize_code(template, format_file)
+        normalize_code template, format_file: format_file
       else
         template
       end
