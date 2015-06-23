@@ -37,9 +37,9 @@ class Thor
 
     def detect_line_ending(file_name)
       file = File.read file_name
-      dos = file.count "\r\n"
-      unix = file.count "\n"
-      if dos > unix
+      dos = file.scan /\r\n$/
+      unix = file.scan /[^\r]\n$/
+      if dos.size > unix.size
         "\r\n"
       else
         "\n"
@@ -64,7 +64,8 @@ class Thor
       line_ending = detect_line_ending file_name
       options.map { |k, v| [k, v << line_ending] }.to_h if options
       code = replace_line_ending(code, line_ending)
-      insert_into_file file_name, code, options
+      p file_name
+      insert_into_file file_name, code, after: "require 'bundler/gem_tasks'\n"
     end
 
     def append_code_to_file(file_name, code)
