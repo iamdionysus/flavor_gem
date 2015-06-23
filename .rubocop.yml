@@ -1,7 +1,7 @@
 AllCops:
   Exclude:
     - 'test/**/*'
-    - 'lib/**/template/**/*'
+    - 'template/**/*'
 
 # dash style for executable file
 Style/FileName:

@@ -64,9 +64,9 @@ module FlavorGem
       major = @major + d_major
       minor = @minor + d_minor
       patch = @patch + d_patch
-      major = 0 if major < 0
-      minor = 0 if minor < 0 || d_major > 0
-      patch = 0 if patch < 0 || d_major > 0 || d_minor > 0
+      [major, minor, patch].map { |x| x < 0 ? 0 : x }
+      minor = 0 if d_major > 0
+      patch = 0 if d_major > 0 || d_minor > 0
       [major, minor, patch].join "."
     end
 

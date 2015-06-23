@@ -1,5 +1,5 @@
 # added by "flavor-gem generate minitest"
-require 'minitest/autorun'
+require "minitest/autorun"
 
 class Module
   def test(name, &block)
