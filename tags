@@ -1,0 +1,88 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Actions	.\lib\flavor_gem\util.rb	/^  module Actions$/;"	m	class:Thor
+Bump	.\lib\flavor_gem\bump.rb	/^    class Bump < Thor::Group$/;"	c	class:FlavorGem.Delete
+Bump	.\lib\flavor_gem\bump.rb	/^    class Bump < Thor::Group$/;"	c	class:FlavorGem.Generate
+BumpTasks	.\lib\flavor_gem\bump.rb	/^  class BumpTasks$/;"	c	class:FlavorGem
+Delete	.\lib\flavor_gem\bump.rb	/^  module Delete$/;"	m	class:FlavorGem
+Delete	.\lib\flavor_gem\minitest.rb	/^  module Delete$/;"	m	class:FlavorGem
+Delete	.\lib\flavor_gem\rspec.rb	/^  module Delete$/;"	m	class:FlavorGem
+Dummy	.\spec\lib\flavor_gem\util_spec.rb	/^  class Dummy < Thor$/;"	c
+FlavorGem	.\lib\flavor_gem\bump.rb	/^module FlavorGem$/;"	m
+FlavorGem	.\lib\flavor_gem\minitest.rb	/^module FlavorGem$/;"	m
+FlavorGem	.\lib\flavor_gem\private.rb	/^module FlavorGem$/;"	m
+FlavorGem	.\lib\flavor_gem\rspec.rb	/^module FlavorGem$/;"	m
+FlavorGem	.\lib\flavor_gem\runner.rb	/^module FlavorGem$/;"	m
+FlavorGem	.\lib\flavor_gem\thor_bin.rb	/^module FlavorGem$/;"	m
+FlavorGem	.\lib\flavor_gem\util.rb	/^module FlavorGem$/;"	m
+FlavorGem	.\lib\flavor_gem\version.rb	/^module FlavorGem$/;"	m
+FlavorGem	.\template\runner_test.rb	/^module FlavorGem$/;"	m
+Generate	.\lib\flavor_gem\bump.rb	/^  module Generate$/;"	m	class:FlavorGem
+Generate	.\lib\flavor_gem\minitest.rb	/^  module Generate$/;"	m	class:FlavorGem
+Generate	.\lib\flavor_gem\private.rb	/^  module Generate$/;"	m	class:FlavorGem
+Generate	.\lib\flavor_gem\rspec.rb	/^  module Generate$/;"	m	class:FlavorGem
+Generate	.\lib\flavor_gem\thor_bin.rb	/^  module Generate$/;"	m	class:FlavorGem
+Minitest	.\lib\flavor_gem\minitest.rb	/^    class Minitest < Thor::Group$/;"	c	class:FlavorGem.Delete
+Minitest	.\lib\flavor_gem\minitest.rb	/^    class Minitest < Thor::Group$/;"	c	class:FlavorGem.Generate
+Module	.\template\minitest_helper.rb	/^class Module$/;"	c
+Private	.\lib\flavor_gem\private.rb	/^    class Private < Thor::Group$/;"	c	class:FlavorGem.Generate
+Rspec	.\lib\flavor_gem\rspec.rb	/^    class Rspec < Thor::Group$/;"	c	class:FlavorGem.Delete
+Rspec	.\lib\flavor_gem\rspec.rb	/^    class Rspec < Thor::Group$/;"	c	class:FlavorGem.Generate
+Runner	.\lib\flavor_gem\runner.rb	/^  class Runner < Thor$/;"	c	class:FlavorGem
+Runner	.\template\runner.rb	/^  class Runner < Thor$/;"	c
+Runner	.\template\runner_test.rb	/^  class Runner < Thor$/;"	c	class:FlavorGem
+Thor	.\lib\flavor_gem\util.rb	/^class Thor$/;"	c
+ThorBin	.\lib\flavor_gem\thor_bin.rb	/^    class ThorBin < Thor::Group$/;"	c	class:FlavorGem.Generate
+add_rake_bump_task	.\lib\flavor_gem\bump.rb	/^      def add_rake_bump_task(rakefile = "Rakefile")$/;"	f	class:FlavorGem.Generate.Bump
+add_runtime_dependency	.\lib\flavor_gem\thor_bin.rb	/^      def add_runtime_dependency$/;"	f	class:FlavorGem.Generate.ThorBin
+all_flavors	.\lib\flavor_gem\runner.rb	/^    def all_flavors$/;"	f	class:FlavorGem.Runner
+all_flavors_name	.\lib\flavor_gem\runner.rb	/^    def all_flavors_name$/;"	f	class:FlavorGem.Runner
+append_code_to_file	.\lib\flavor_gem\util.rb	/^    def append_code_to_file(file_name, code)$/;"	f	class:Thor.Actions
+append_rakefile	.\lib\flavor_gem\minitest.rb	/^      def append_rakefile(rakefile = "Rakefile")$/;"	f	class:FlavorGem.Generate.Minitest
+append_rakefile	.\lib\flavor_gem\rspec.rb	/^      def append_rakefile(rakefile = "Rakefile")$/;"	f	class:FlavorGem.Generate.Rspec
+append_template_to_file	.\lib\flavor_gem\util.rb	/^    def append_template_to_file(file_name, template)$/;"	f	class:Thor.Actions
+backup	.\spec\helper.rb	/^def backup(file_name, copy: false)$/;"	f
+bump	.\lib\flavor_gem\bump.rb	/^    def bump(d_major = 0, d_minor = 0, d_patch = 1)$/;"	f	class:FlavorGem
+change	.\lib\flavor_gem\bump.rb	/^    def change$/;"	f
+create_bin_file	.\lib\flavor_gem\thor_bin.rb	/^      def create_bin_file(file_name = "bin\/#{gem_name}")$/;"	f	class:FlavorGem.Generate.ThorBin
+create_helper	.\lib\flavor_gem\rspec.rb	/^      def create_helper(helper = "spec\/helper.rb")$/;"	f	class:FlavorGem.Generate.Rspec
+create_minitest_helper	.\lib\flavor_gem\minitest.rb	/^      def create_minitest_helper$/;"	f	class:FlavorGem.Generate.Minitest
+create_runner_class	.\lib\flavor_gem\thor_bin.rb	/^      def create_runner_class(file_name = nil)$/;"	f	class:FlavorGem.Generate.ThorBin
+delete_minitest_rake	.\lib\flavor_gem\rspec.rb	/^      def delete_minitest_rake$/;"	f	class:FlavorGem.Generate.Rspec
+detect_line_ending	.\lib\flavor_gem\util.rb	/^    def detect_line_ending(file_name)$/;"	f	class:Thor.Actions
+extract_current_version	.\lib\flavor_gem\bump.rb	/^    def extract_current_version(version)$/;"	f	class:FlavorGem
+file_include_code?	.\lib\flavor_gem\util.rb	/^    def file_include_code?(file_name, code)$/;"	f	class:Thor.Actions
+file_include_template?	.\lib\flavor_gem\util.rb	/^    def file_include_template?(file_name, template)$/;"	f	class:Thor.Actions
+fix_rake_bundler_release	.\lib\flavor_gem\private.rb	/^      def fix_rake_bundler_release(file_name = "Rakefile")$/;"	f	class:FlavorGem.Generate.Private
+format_quote_to_file	.\lib\flavor_gem\util.rb	/^    def format_quote_to_file(code, file_name)$/;"	f	class:Thor.Actions
+gem_class_name	.\lib\flavor_gem\util.rb	/^    def gem_class_name$/;"	f	class:Thor.Actions
+gem_name	.\lib\flavor_gem\util.rb	/^    def gem_name$/;"	f	class:Thor.Actions
+generate	.\lib\flavor_gem\runner.rb	/^    def generate(*names)$/;"	f	class:FlavorGem.Runner
+initialize	.\lib\flavor_gem\bump.rb	/^    def initialize(version_file = Dir["lib\/**\/version.rb"][0])$/;"	f	class:FlavorGem
+inject_minitest_gemspec	.\lib\flavor_gem\minitest.rb	/^      def inject_minitest_gemspec$/;"	f	class:FlavorGem.Generate.Minitest
+inject_rspec_gemfile	.\lib\flavor_gem\rspec.rb	/^      def inject_rspec_gemfile$/;"	f	class:FlavorGem.Generate.Rspec
+insert_line_into_file	.\lib\flavor_gem\util.rb	/^    def insert_line_into_file(file_name, code, **options)$/;"	f	class:Thor.Actions
+install	.\lib\flavor_gem\bump.rb	/^    def install$/;"	f
+install_all_bump_task	.\lib\flavor_gem\bump.rb	/^    def install_all_bump_task$/;"	f
+install_bump_task	.\lib\flavor_gem\bump.rb	/^    def install_bump_task(version_type, version)$/;"	f
+install_default_bump_task	.\lib\flavor_gem\bump.rb	/^    def install_default_bump_task$/;"	f
+install_tasks	.\lib\flavor_gem\bump.rb	/^      def install_tasks(version_file)$/;"	f	class:FlavorGem.BumpTasks
+install_version_task	.\lib\flavor_gem\bump.rb	/^    def install_version_task$/;"	f
+invoke_delete	.\lib\flavor_gem\runner.rb	/^    def invoke_delete(name, args)$/;"	f	class:FlavorGem.Runner
+invoke_generate	.\lib\flavor_gem\runner.rb	/^    def invoke_generate(name, args)$/;"	f	class:FlavorGem.Runner
+normalize_code	.\lib\flavor_gem\util.rb	/^    def normalize_code(code, format_file: nil)$/;"	f	class:Thor.Actions
+old_version	.\lib\flavor_gem\bump.rb	/^    def old_version$/;"	f	class:FlavorGem
+remove_bump_tasks	.\lib\flavor_gem\bump.rb	/^      def remove_bump_tasks$/;"	f	class:FlavorGem.Delete.Bump
+replace_line_ending	.\lib\flavor_gem\util.rb	/^    def replace_line_ending(code, line_ending)$/;"	f	class:Thor.Actions
+restore	.\spec\helper.rb	/^def restore(file_name)$/;"	f
+rm	.\spec\helper.rb	/^def rm(file_name)$/;"	f
+save_version_file	.\lib\flavor_gem\bump.rb	/^    def save_version_file(new_version)$/;"	f	class:FlavorGem
+say_not_in_flavors	.\lib\flavor_gem\runner.rb	/^    def say_not_in_flavors(name)$/;"	f	class:FlavorGem.Runner
+template_content	.\lib\flavor_gem\util.rb	/^    def template_content(template_name, format_file: nil)$/;"	f	class:Thor.Actions
+template_file_name	.\lib\flavor_gem\util.rb	/^    def template_file_name(template)$/;"	f	class:Thor.Actions
+test	.\template\minitest_helper.rb	/^  def test(name, &block)$/;"	f	class:Module
+touch	.\spec\helper.rb	/^def touch(file_name)$/;"	f
