@@ -1,7 +1,10 @@
 # added by flavor-gem generate minitest
 require "rake/testtask"
 
-Rake::TestTask.new do |t|
+Rake::TestTask.new(:test) do |t|
   t.libs << "test"
-  t.pattern = "test/**/test_*.rb"
+  t.libs << "lib"
+  t.test_files = FileList['test/**/*_test.rb']
 end
+
+task :default => :test
